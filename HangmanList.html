@@ -5,11 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Hangman List</title>
     </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #itemList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #itemList li {
+            margin: 5px 0;
+        }
+        #addItemButton {
+            margin-top: 10px;
+        }
+    </style>
 <body>
 
     <h1>Welcome to the Hangman List</h1>
     <p>This is the Hangman List challenge.</p>
-    <ol>
+    <ul id="itemList">
         <li value="Dragon">Dragon</li>
         <li value="Starfish">Starfish</li>
         <li value="Icosathlon">Icosathlon</li>
@@ -21,8 +36,20 @@
         <li value="Tornado">Climbing</li>
         <li value="Photosynthesis">Climbing</li>
         <li value="Science">Climbing</li>
-    </ol>
+    </ul>
+    <input type="text" id="newItem" placeholder="Add an Item to the List">
+    <button id="addItemButton">Add Item</button>
+    <script>
+        document.getElementById('addItemButton').addEventListener('click', function() {
+            var newItem = document.getElementById('newItem').value;
+            if (newItem) {
+                var li = document.createElement('li');
+                li.textContent = newItem;
+                document.getElementById('itemList').appendChild(li);
+                document.getElementById('newItem').value = ''; // Clear the input field
+            }
+        });
+    </script>
     
 </body>
 </html>
-
